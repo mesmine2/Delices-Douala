@@ -1,0 +1,22 @@
+<div class="rating-wrapper" (mouseleave)="onStarLeave()">
+  <div class="stars">
+    @for (star of [1, 2, 3, 4, 5]; track star) {
+      <button
+        type="button"
+        class="star-button"
+        [class.active]="star <= (hoveredRating || rating())"
+        (click)="onStarClick(star)"
+        (mouseenter)="onStarEnter(star)"
+        [attr.aria-label]="'Donner ' + star + ' étoile' + (star > 1 ? 's' : '')"
+      >
+        ★
+      </button>
+    }
+  </div>
+  <!-- TEXTE DE NOTE -->
+  @if (rating() > 0) {
+    <span class="rating-text">{{ rating() }}/5</span>
+  } @else {
+    <span class="rating-text empty">Cliquez !</span>
+  }
+</div>

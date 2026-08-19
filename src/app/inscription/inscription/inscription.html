@@ -1,0 +1,216 @@
+<div class="form-page">
+
+  <form
+    class="form-container"
+    [formGroup]="inscriptionForm"
+    (ngSubmit)="soumettre()"
+  >
+
+    <div class="form-header">
+      <span class="form-icon">🍽️</span>
+
+      <h1>Créer un compte</h1>
+
+      <p>
+        Rejoignez Délices de Douala
+      </p>
+    </div>
+
+
+    <!-- PRÉNOM + NOM -->
+
+    <div class="form-row">
+
+      <div class="form-group">
+
+        <label for="firstName">
+          Prénom
+        </label>
+
+        <input
+          id="firstName"
+          type="text"
+          placeholder="Votre prénom"
+          formControlName="firstName"
+        />
+
+        @if (firstName.touched && firstName.invalid) {
+
+          @if (firstName.hasError('required')) {
+            <small class="erreur">
+              Le prénom est requis.
+            </small>
+          }
+
+          @else if (firstName.hasError('minlength')) {
+            <small class="erreur">
+              2 caractères minimum.
+            </small>
+          }
+
+        }
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label for="lastName">
+          Nom
+        </label>
+
+        <input
+          id="lastName"
+          type="text"
+          placeholder="Votre nom"
+          formControlName="lastName"
+        />
+
+        @if (lastName.touched && lastName.invalid) {
+
+          @if (lastName.hasError('required')) {
+            <small class="erreur">
+              Le nom est requis.
+            </small>
+          }
+
+          @else if (lastName.hasError('minlength')) {
+            <small class="erreur">
+              2 caractères minimum.
+            </small>
+          }
+
+        }
+
+      </div>
+
+    </div>
+
+
+    <!-- EMAIL -->
+
+    <div class="form-group">
+
+      <label for="email">
+        Email
+      </label>
+
+      <input
+        id="email"
+        type="email"
+        placeholder="exemple@email.com"
+        formControlName="email"
+      />
+
+      @if (email.touched && email.invalid) {
+
+        @if (email.hasError('required')) {
+          <small class="erreur">
+            L'email est requis.
+          </small>
+        }
+
+        @else if (email.hasError('email')) {
+          <small class="erreur">
+            Le format de l'email est invalide.
+          </small>
+        }
+
+      }
+
+    </div>
+
+
+    <!-- MOT DE PASSE -->
+
+    <div class="form-group">
+
+      <label for="password">
+        Mot de passe
+      </label>
+
+      <input
+        id="password"
+        type="password"
+        placeholder="6 caractères minimum"
+        formControlName="password"
+      />
+
+      @if (password.touched && password.invalid) {
+
+        @if (password.hasError('required')) {
+          <small class="erreur">
+            Le mot de passe est requis.
+          </small>
+        }
+
+        @else if (password.hasError('minlength')) {
+          <small class="erreur">
+            6 caractères minimum.
+          </small>
+        }
+
+      }
+
+    </div>
+
+
+    <!-- CONFIRMATION -->
+
+    <div class="form-group">
+
+      <label for="confirmation">
+        Confirmer le mot de passe
+      </label>
+
+      <input
+        id="confirmation"
+        type="password"
+        placeholder="Confirmez votre mot de passe"
+        formControlName="confirmation"
+      />
+
+      @if (confirmation.touched && confirmation.hasError('required')) {
+
+        <small class="erreur">
+          La confirmation est requise.
+        </small>
+
+      }
+
+      @if (
+        inscriptionForm.hasError('motsDePasseDifferents')
+        && confirmation.touched
+        && !confirmation.hasError('required')
+      ) {
+
+        <small class="erreur">
+          Les mots de passe ne correspondent pas.
+        </small>
+
+      }
+
+    </div>
+
+
+    <!-- BOUTON -->
+
+    <button
+      class="btn"
+      type="submit"
+      [disabled]="inscriptionForm.invalid"
+    >
+      Créer mon compte
+    </button>
+
+
+    <p class="form-footer">
+      Vous avez déjà un compte ?
+      <a href="#">
+        Se connecter
+      </a>
+    </p>
+
+  </form>
+
+</div>

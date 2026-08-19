@@ -1,0 +1,118 @@
+<div class="form-page">
+
+  <form
+    class="form-container"
+    [formGroup]="connexionForm"
+    (ngSubmit)="soumettre()"
+  >
+
+    <div class="form-header">
+
+      <span class="form-icon">
+        👋
+      </span>
+
+      <h1>Bienvenue</h1>
+
+      <p>
+        Connectez-vous à Délices de Douala
+      </p>
+
+    </div>
+
+
+    <!-- EMAIL -->
+
+    <div class="form-group">
+
+      <label for="email">
+        Email
+      </label>
+
+      <input
+        id="email"
+        type="email"
+        placeholder="exemple@email.com"
+        formControlName="email"
+      />
+
+      @if (email.touched && email.invalid) {
+
+        @if (email.hasError('required')) {
+
+          <small class="erreur">
+            L'email est requis.
+          </small>
+
+        }
+
+        @else if (email.hasError('email')) {
+
+          <small class="erreur">
+            Le format de l'email est invalide.
+          </small>
+
+        }
+
+      }
+
+    </div>
+
+
+    <!-- MOT DE PASSE -->
+
+    <div class="form-group">
+
+      <label for="password">
+        Mot de passe
+      </label>
+
+      <input
+        id="password"
+        type="password"
+        placeholder="Votre mot de passe"
+        formControlName="password"
+      />
+
+      @if (password.touched && password.invalid) {
+
+        @if (password.hasError('required')) {
+
+          <small class="erreur">
+            Le mot de passe est requis.
+          </small>
+
+        }
+
+        @else if (password.hasError('minlength')) {
+
+          <small class="erreur">
+            6 caractères minimum.
+          </small>
+
+        }
+
+      }
+
+    </div>
+
+
+    <button
+      class="btn"
+      type="submit"
+      [disabled]="connexionForm.invalid"
+    >
+      Se connecter
+    </button>
+
+
+    <p class="form-footer">
+      Pas encore de compte ?
+      <a href="#">
+        Créer un compte
+      </a>
+    </p>
+
+  </form>
+
+</div>

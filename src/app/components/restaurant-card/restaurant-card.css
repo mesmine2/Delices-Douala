@@ -1,0 +1,428 @@
+/*CARTE RESTAURANT*/
+.restaurant-card {
+  position: relative;
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #e5ebe8;
+  border-radius: 18px;
+  overflow: hidden;
+  transition:
+    transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.3s ease;
+  box-shadow:
+    0 6px 20px rgba(20, 52, 43, 0.08);
+}
+/*HOVER*/
+.restaurant-card:hover {
+  transform: translateY(-8px);
+  border-color: #c9d9d2;
+  box-shadow:
+    0 20px 45px rgba(20, 52, 43, 0.15);
+}
+/*PETITE BARRE VERTE EN HAUT*/
+.restaurant-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #14342b 0%, #1d5a46 100%);
+  z-index: 10;
+}
+
+/*IMAGE*/
+.card-image {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #f0f5e8 0%, #e8f4f0 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.card-image::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(20, 52, 43, 0.1) 0%, rgba(20, 52, 43, 0.2) 100%);
+  pointer-events: none;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.restaurant-card:hover .card-image img {
+  transform: scale(1.12);
+}
+
+/*NUMERO*/
+.card-number {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f4b942 0%, #f2a830 100%);
+  color: #14342b;
+  font-size: 12px;
+  font-weight: 800;
+  z-index: 5;
+  box-shadow: 0 2px 8px rgba(244, 185, 66, 0.3);
+  letter-spacing: 0.5px;
+}
+
+.restaurant-card:hover .card-number {
+  transform: scale(1.1);
+}
+
+/*CONTENU*/
+.card-content {
+  padding: 20px 22px;
+}
+
+/*NOM DU RESTAURANT */
+.card-content h3 {
+  margin: 0 0 8px 0;
+  padding-right: 42px;
+  color: #14342b;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.3px;
+}
+
+/*LOCALISATION */
+.location {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  padding: 5px 10px;
+  border-radius: 50px;
+  background: #f3f7f5;
+  color: #687871;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* petit point vert */
+.location-icon {
+  width: 7px;
+  height: 7px;
+  display: inline-block;
+  border-radius: 50%;
+  background: #1d5a46;
+  font-size: 0;
+}
+
+/*SPECIALITE*/
+.specialty {
+  margin-top: 10px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #f9faf8 0%, #f3f7f5 100%);
+  border: 1px solid #e8ebe9;
+}
+
+/* titre spécialité */
+.specialty-label {
+  display: block;
+  color: #789087;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+/* nom du plat */
+.specialty p {
+  margin: 4px 0 0;
+  color: #24352e;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+/*SEPARATION*/
+.card-divider {
+  width: 100%;
+  height: 1px;
+  margin: 12px 0;
+  background: #edf0ee;
+}
+
+/*ZONE NOTATION*/
+.rating-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #f0f5f3 0%, #e8f2f0 100%);
+  border: 1px solid #dde5e2;
+}
+
+/* texte */
+.rating-title {
+  color: #14342b;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+/* RESPONSIVE DESKTOP (1200px+) */
+@media (min-width: 1200px) {
+  .card-image {
+    height: 200px;
+  }
+  .card-content {
+    padding: 24px 26px;
+  }
+  .card-content h3 {
+    font-size: 21px;
+  }
+  .card-number {
+    width: 36px;
+    height: 36px;
+    font-size: 12px;
+    top: 20px;
+    right: 20px;
+  }
+  .specialty {
+    padding: 14px 16px;
+  }
+  .specialty p {
+    font-size: 15px;
+  }
+  .rating-section {
+    padding: 14px;
+    gap: 12px;
+  }
+}
+
+/* RESPONSIVE TABLETTE (768px - 1199px) */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .card-image {
+    height: 160px;
+  }
+  .card-content {
+    padding: 16px 18px;
+  }
+  .card-content h3 {
+    font-size: 17px;
+  }
+  .card-number {
+    width: 30px;
+    height: 30px;
+    font-size: 10px;
+    top: 14px;
+    right: 14px;
+  }
+  .location {
+    font-size: 11px;
+    padding: 4px 8px;
+    gap: 5px;
+  }
+  .specialty {
+    padding: 10px 12px;
+    margin-top: 10px;
+  }
+  .specialty-label {
+    font-size: 8px;
+  }
+  .specialty p {
+    font-size: 13px;
+    margin: 3px 0 0;
+  }
+  .card-divider {
+    margin: 10px 0;
+  }
+  .rating-section {
+    padding: 10px;
+    gap: 8px;
+  }
+  .rating-title {
+    font-size: 10px;
+  }
+}
+
+/* RESPONSIVE MOBILE (480px - 767px) */
+@media (max-width: 767px) {
+  .restaurant-card {
+    border-radius: 16px;
+    box-shadow: 0 3px 12px rgba(20, 52, 43, 0.08);
+  }
+  
+  .restaurant-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(20, 52, 43, 0.12);
+  }
+
+  .card-image {
+    height: 140px;
+  }
+
+  .card-content {
+    padding: 14px 16px;
+  }
+
+  .card-content h3 {
+    font-size: 16px;
+    padding-right: 36px;
+    line-height: 1.3;
+  }
+
+  .card-number {
+    top: 12px;
+    right: 12px;
+    width: 28px;
+    height: 28px;
+    font-size: 9px;
+  }
+
+  .location {
+    font-size: 11px;
+    padding: 4px 8px;
+    margin-top: 6px;
+    gap: 4px;
+  }
+
+  .location-icon {
+    width: 6px;
+    height: 6px;
+  }
+
+  .specialty {
+    margin-top: 10px;
+    padding: 10px 12px;
+    border-radius: 10px;
+  }
+
+  .specialty-label {
+    font-size: 8px;
+    letter-spacing: 0.8px;
+  }
+
+  .specialty p {
+    font-size: 13px;
+    margin: 3px 0 0;
+  }
+
+  .card-divider {
+    margin: 10px 0;
+    height: 1px;
+  }
+
+  .rating-section {
+    width: 100%;
+    padding: 10px;
+    gap: 8px;
+    border-radius: 8px;
+  }
+
+  .rating-title {
+    font-size: 10px;
+  }
+}
+
+/* RESPONSIVE PETIT MOBILE (< 480px) */
+@media (max-width: 479px) {
+  .restaurant-card {
+    border-radius: 14px;
+  }
+
+  .card-image {
+    height: 120px;
+  }
+
+  .card-content {
+    padding: 12px 14px;
+  }
+
+  .card-content h3 {
+    font-size: 15px;
+    padding-right: 32px;
+    line-height: 1.25;
+  }
+
+  .card-number {
+    top: 10px;
+    right: 10px;
+    width: 26px;
+    height: 26px;
+    font-size: 9px;
+  }
+
+  .location {
+    font-size: 10px;
+    padding: 3px 6px;
+    margin-top: 5px;
+    gap: 3px;
+  }
+
+  .location-icon {
+    width: 5px;
+    height: 5px;
+  }
+
+  .specialty {
+    margin-top: 8px;
+    padding: 8px 10px;
+    border-radius: 8px;
+  }
+
+  .specialty-label {
+    font-size: 7px;
+  }
+
+  .specialty p {
+    font-size: 12px;
+    margin: 2px 0 0;
+  }
+
+  .card-divider {
+    margin: 8px 0;
+  }
+
+  .rating-section {
+    padding: 8px;
+    gap: 6px;
+    border-radius: 6px;
+  }
+
+  .rating-title {
+    font-size: 9px;
+  }
+  .card-content h3 {
+    font-size: 20px;
+
+    padding-right: 45px;
+  }
+
+  .rating-section {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 10px;
+  }
+
+}

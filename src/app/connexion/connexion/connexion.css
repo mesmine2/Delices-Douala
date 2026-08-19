@@ -1,0 +1,141 @@
+.form-page {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 20px;
+  background: #f7f8f6;
+}
+
+.form-container {
+  width: 500px;
+  max-width: 100%;
+  background: #ffffff;
+  padding: 35px;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.form-icon {
+  display: inline-flex;
+  width: 55px;
+  height: 55px;
+  align-items: center;
+  justify-content: center;
+  background: #fff1e6;
+  border-radius: 50%;
+  font-size: 27px;
+  margin-bottom: 12px;
+}
+
+.form-header h1 {
+  margin: 0;
+  color: #14342b;
+  font-size: 28px;
+}
+
+.form-header p {
+  margin-top: 8px;
+  color: #777;
+  font-size: 14px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  margin-bottom: 7px;
+  color: #14342b;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.form-group input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 13px 14px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  outline: none;
+  font-size: 14px;
+  transition: 0.2s ease;
+}
+
+.form-group input:focus {
+  border-color: #f28c28;
+  box-shadow: 0 0 0 3px rgba(242, 140, 40, 0.12);
+}
+
+.form-group input.ng-invalid.ng-touched {
+  border-color: #dc3545;
+}
+
+.erreur {
+  margin-top: 6px;
+  color: #dc3545;
+  font-size: 12px;
+}
+
+.btn {
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  padding: 14px;
+  margin-top: 8px;
+
+  background: #f28c28;
+  color: white;
+
+  font-size: 15px;
+  font-weight: 700;
+
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.btn:hover:not(:disabled) {
+  background: #df7915;
+  transform: translateY(-1px);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.form-footer {
+  text-align: center;
+  margin-top: 22px;
+  font-size: 14px;
+  color: #777;
+}
+
+.form-footer a {
+  color: #f28c28;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+@media (max-width: 550px) {
+
+  .form-page {
+    padding: 30px 10px;
+  }
+
+  .form-container {
+    width: 95%;
+    padding: 25px 20px;
+  }
+
+  .form-header h1 {
+    font-size: 24px;
+  }
+}

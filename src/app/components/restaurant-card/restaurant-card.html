@@ -1,0 +1,60 @@
+<article class="restaurant-card">
+
+  <!-- IMAGE -->
+  <div class="card-image">
+    <img [src]="restaurant().image" [alt]="restaurant().name" />
+  </div>
+
+  <!-- NUMERO -->
+  <div class="card-number">
+    #{{ restaurant().id }}
+  </div>
+
+
+  <div class="card-content">
+
+    <!-- NOM -->
+    <h3>
+      {{ restaurant().name }}
+    </h3>
+
+
+    <!-- LOCALISATION -->
+    <div class="location">
+
+      <span class="location-icon"></span>
+
+      <span>
+        {{ restaurant().district }}, Douala
+      </span>
+
+    </div>
+
+    <!-- SPECIALITE -->
+    <div class="specialty">
+
+      <span class="specialty-label">
+        SPÉCIALITÉ
+      </span>
+
+      <p>
+        {{ restaurant().specialty }}
+      </p>
+
+    </div>
+
+    <!-- SEPARATEUR -->
+    <div class="card-divider"></div>
+
+    <!-- NOTATION -->
+    <div class="rating-section">
+      <span class="rating-title">
+        Votre expérience
+      </span>
+      <app-star-rating
+        [rating]="restaurant().rating"
+        (ratingChanged)="onRatingChanged($event)"
+      />
+    </div>
+  </div>
+</article>

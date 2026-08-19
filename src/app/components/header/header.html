@@ -1,0 +1,79 @@
+<header class="header">
+
+  <div class="header-content">
+
+    <!-- LOGO -->
+
+    <div class="brand">
+
+      <div class="brand-icon">
+        ★
+      </div>
+
+      <div class="brand-text">
+
+        <span class="brand-title">
+          Délices de Douala
+        </span>
+
+        <span class="brand-subtitle">
+          Guide culinaire
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <!-- STATISTIQUES -->
+
+    <div class="header-stats">
+
+      <div class="stat">
+
+        <span class="stat-icon">
+          ★
+        </span>
+
+        <div>
+
+          <strong>
+            {{ ratedCount() }} / 6
+          </strong>
+
+          <span>
+            restaurants notés
+          </span>
+
+        </div>
+
+      </div>
+
+
+      @if (averageRating() > 0) {
+
+        <div class="header-divider"></div>
+
+        <div class="average">
+
+          <span>
+            {{ averageRating() }}
+          </span>
+
+          <strong>
+            ★
+          </strong>
+
+          <small>
+            moyenne
+          </small>
+
+        </div>
+
+      }
+
+    </div>
+
+  </div>
+
+</header>

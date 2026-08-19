@@ -1,0 +1,315 @@
+<section class="menu-section">
+
+  <!-- =====================================================
+       EN-TÊTE
+  ====================================================== -->
+
+  <div class="menu-heading">
+
+    <div>
+
+      <span class="section-label">
+        NOTRE CARTE
+      </span>
+
+      <h2>
+        Les saveurs de Douala
+      </h2>
+
+      <p>
+        Découvrez nos plats traditionnels, nos grillades
+        et nos boissons inspirées du Cameroun.
+      </p>
+
+    </div>
+
+    <div class="menu-badge">
+      <span>
+        Cuisine camerounaise
+      </span>
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       PLAT DU JOUR
+  ====================================================== -->
+
+  @if (platDuJour(); as plat) {
+
+    <div class="dish-of-day">
+
+      <div class="dish-of-day-content">
+
+        <div class="dish-icon">
+          🍽
+        </div>
+
+        <div>
+
+          <span class="dish-label">
+            PLAT DU JOUR
+          </span>
+
+          <h3>
+            {{ plat.nom }}
+          </h3>
+
+          <span class="dish-category">
+            {{ plat.categorie }}
+          </span>
+
+        </div>
+
+      </div>
+
+      <div class="dish-price">
+        {{ plat.prix | currency:'XAF':'symbol':'1.0-0' }}
+      </div>
+
+    </div>
+
+  }
+
+
+  <!-- =====================================================
+       FILTRES PAR CATÉGORIE
+  ====================================================== -->
+
+  <div class="category-area">
+
+    <div class="category-title">
+      Filtrer par catégorie
+    </div>
+
+    <div class="categories">
+
+      @for (categorieItem of categories; track categorieItem) {
+
+        <button
+          type="button"
+          class="category-button"
+          [class.active]="categorieItem === categorie()"
+          (click)="choisirCategorie(categorieItem)"
+        >
+
+          {{ categorieItem }}
+
+        </button>
+
+      }
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       CHARGEMENT
+  ====================================================== -->
+
+  @if (menuResource.isLoading()) {
+
+    <div class="menu-state loading-state">
+
+      <div class="loader"></div>
+
+      <div>
+
+        <strong>
+          Chargement de la carte...
+        </strong>
+
+        <span>
+          Nous préparons les spécialités de Douala.
+        </span>
+
+      </div>
+
+    </div>
+
+  }
+
+
+  <!-- =====================================================
+       ERREUR
+  ====================================================== -->
+
+  @if (menuResource.error()) {
+
+    <div class="menu-state error-state">
+
+      <div class="state-icon">
+        !
+      </div>
+
+      <div>
+
+        <strong>
+          Impossible de charger la carte
+        </strong>
+
+        <span>
+          Vérifiez que le fichier
+          <code>/api/plats.json</code>
+          est disponible.
+        </span>
+
+      </div>
+
+    </div>
+
+  }
+
+
+  <!-- =====================================================
+       LISTE DES PLATS
+  ====================================================== -->
+
+  @if (
+    !menuResource.isLoading() &&
+    !menuResource.error()
+  ) {
+
+    @if (platsFiltres().length > 0) {
+
+      <div class="menu-count">
+
+        <span>
+          {{ platsFiltres().length }}
+          plat(s) disponible(s)
+        </span>
+
+      </div>
+
+
+      <div class="menu-grid">
+
+        @for (plat of platsFiltres(); track plat.id) {
+
+          <article
+            class="dish-card"
+            [class.unavailable]="!plat.disponible"
+          >
+
+            <!-- Catégorie + disponibilité -->
+
+            <div class="dish-card-top">
+
+              <span class="dish-card-category">
+                {{ plat.categorie }}
+              </span>
+
+              @if (plat.disponible) {
+
+                <span class="available-badge">
+                  Disponible
+                </span>
+
+              } @else {
+
+                <span class="unavailable-badge">
+                  Épuisé
+                </span>
+
+              }
+
+            </div>
+
+
+            <!-- Icône décorative -->
+
+            <div class="dish-card-icon">
+
+              @if (plat.categorie === 'Plats') {
+                🍽
+              }
+
+              @if (plat.categorie === 'Grillades') {
+                🔥
+              }
+
+              @if (plat.categorie === 'Végétarien') {
+                🌱
+              }
+
+              @if (plat.categorie === 'Boissons') {
+                🥤
+              }
+
+            </div>
+
+
+            <!-- Nom -->
+
+            <h3>
+              {{ plat.nom }}
+            </h3>
+
+
+            <!-- Prix + disponibilité -->
+
+            <div class="dish-card-bottom">
+
+              <span class="dish-price-small">
+                {{ plat.prix | currency:'XAF':'symbol':'1.0-0' }}
+              </span>
+
+
+              @if (plat.disponible) {
+
+                <span class="availability">
+                  Disponible
+                </span>
+
+              } @else {
+
+                <span class="availability unavailable-text">
+                  Indisponible
+                </span>
+
+              }
+
+            </div>
+
+          </article>
+
+        }
+
+      </div>
+
+    } @else {
+
+      <!-- =================================================
+           AUCUN PLAT
+      ================================================== -->
+
+      <div class="empty-state">
+
+        <div>
+          🍽
+        </div>
+
+        <strong>
+          Aucun plat dans cette catégorie
+        </strong>
+
+        <span>
+          Essayez une autre catégorie.
+        </span>
+
+        <button
+          type="button"
+          (click)="afficherToutesLesCategories()"
+        >
+          Voir toute la carte
+        </button>
+
+      </div>
+
+    }
+
+  }
+
+</section>
