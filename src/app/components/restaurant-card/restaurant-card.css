@@ -187,7 +187,13 @@
   text-transform: uppercase;
   letter-spacing: 0.4px;
 }
+:host {
+  display: block;
 
+  width: 100%;
+
+  min-width: 0;
+}
 /* RESPONSIVE DESKTOP (1200px+) */
 @media (min-width: 1200px) {
   .card-image {
